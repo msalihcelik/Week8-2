@@ -51,8 +51,10 @@ final class ViewController: UIViewController {
     
 }
 
+//MARK: - UICollectionViewDelegate
 extension ViewController: UICollectionViewDelegate { }
 
+//MARK: - UICollectionViewDataSource Methods
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.photoList.getPhotosCount ?? 0
