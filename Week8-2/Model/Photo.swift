@@ -5,8 +5,6 @@
 //  Created by Mehmet Salih ÇELİK on 19.11.2021.
 //
 
-import Foundation
-
 struct Photo: Decodable {
     let id: String?
     let owner: String?

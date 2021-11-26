@@ -15,6 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        configureKeyboard()
+        return true
+    }
+    
+    func configureKeyboard() {
         IQKeyboardManager.shared.enable = true
 //        IQKeyboardManager.shared.enableDebugging = true
         IQKeyboardManager.shared.overrideKeyboardAppearance = true
@@ -24,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        IQKeyboardManager.shared.placeholderFont = UIFont(name: "Times New Roman", size: 15.0)
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.shouldPlayInputClicks = true
-        return true
     }
 
     // MARK: UISceneSession Lifecycle

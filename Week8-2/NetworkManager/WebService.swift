@@ -5,10 +5,9 @@
 //  Created by Mehmet Salih ÇELİK on 22.11.2021.
 //
 
-import Foundation
 import Alamofire
 
-class WebService {
+class WebService: UIViewController {
     
     typealias CompletionHandler = (_ success: [Photo] ) -> Void
     
@@ -24,7 +23,7 @@ class WebService {
                     completionHandler(decodedData.photos.photo)
                 }
                 catch {
-                    print("fail")
+                    print("failure")
                 }
             case .failure(let error):
                 print(error)
