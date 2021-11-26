@@ -9,13 +9,9 @@ import UIKit
 
 final class ViewController: UIViewController {
     
-    @IBOutlet weak var firstPhotoNameTextField: UITextField!
-    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     var photoList = PhotosViewModel(photos: [])
-    var photoURL = ""
-    var searchURL = ""
-    var textFieldList = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,38 +22,35 @@ final class ViewController: UIViewController {
     private func configureContents() {
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
-    }
-    
-    private func appendTextFieldList(textFieldText: String?) {
-        guard let temp = textFieldText else { return }
-        guard temp.isEmpty else { return textFieldList.append(temp) }
-    }
-
-    private func appendSearchURL(text: String) {
-        searchURL = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(Constants.apiKey)&text=\(text))&format=json&nojsoncallback=1"
-    }
-    
-    @IBAction func searchButtonTapped(_ sender: Any) {
-        photoURL.removeAll()
-        textFieldList.removeAll()
-        appendTextFieldList(textFieldText: firstPhotoNameTextField.text)
-        guard textFieldList.isEmpty == false else { return }
-        appendSearchURL(text: textFieldList)
-        Webservice.downloadModel(searchURL) { success in
-            self.photoList.photos = success
-            self.photoCollectionView.reloadData()
-        }
+        searchBar.delegate = self
     }
     
 }
 
 //MARK: - UICollectionViewDelegate
-extension ViewController: UICollectionViewDelegate { }
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return .init(top: 0, left: 16, bottom: 0, right: 16)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 16
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 0
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let cellWidth = (collectionView.frame.width - (4 * 16)) / 3
+            return .init(width: cellWidth, height: cellWidth)
+        }
+}
 
 //MARK: - UICollectionViewDataSource Methods
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.photoList.getPhotosCount ?? 0
+        self.photoList.getPhotosCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -69,5 +62,18 @@ extension ViewController: UICollectionViewDataSource {
         let secret = photoList.getSecret(indexPath: indexPath.row)
         cell.imageView.configureKF(url: "\(url)/\(serverId)/\(id)_\(secret)_m.jpg")
         return cell
+    }
+}
+
+//MARK: - UISearchBarDelegate
+extension ViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text?.lowercased() else { return }
+        let encodedText = text.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        guard let encodedText = encodedText else { return }
+        WebService.getFlickrPhotos(text: encodedText) { success in
+            self.photoList.photos = success
+            self.photoCollectionView.reloadData()
+        }
     }
 }

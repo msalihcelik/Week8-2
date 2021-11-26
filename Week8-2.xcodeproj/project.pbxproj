@@ -16,7 +16,7 @@
 		6765F26D274521CB0053E8DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6765F26B274521CB0053E8DC /* LaunchScreen.storyboard */; };
 		6788B5D627476B5D0053F819 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6788B5D527476B5D0053F819 /* UIImageView+Extensions.swift */; };
 		6788B5D8274773F30053F819 /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6788B5D7274773F30053F819 /* PhotosViewModel.swift */; };
-		67C1D2A6274B48AC0019C304 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C1D2A5274B48AC0019C304 /* Webservice.swift */; };
+		67C1D2A6274B48AC0019C304 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C1D2A5274B48AC0019C304 /* WebService.swift */; };
 		67D5E5C9274746600063B8ED /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5E5C8274746600063B8ED /* CollectionViewCell.swift */; };
 		67D5E5CB27474B5E0063B8ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5E5CA27474B5E0063B8ED /* Constants.swift */; };
 		67D5E5CD2747567A0063B8ED /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D5E5CC2747567A0063B8ED /* Photos.swift */; };
@@ -37,7 +37,7 @@
 		6765F26E274521CB0053E8DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6788B5D527476B5D0053F819 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		6788B5D7274773F30053F819 /* PhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModel.swift; sourceTree = "<group>"; };
-		67C1D2A5274B48AC0019C304 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		67C1D2A5274B48AC0019C304 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		67D5E5C8274746600063B8ED /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		67D5E5CA27474B5E0063B8ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		67D5E5CC2747567A0063B8ED /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
@@ -67,6 +67,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		675097D2274C9F0600929218 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				67C1D2A5274B48AC0019C304 /* WebService.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
 		6765F254274521CB0053E8DC = {
 			isa = PBXGroup;
 			children = (
@@ -88,7 +96,7 @@
 		6765F25F274521CB0053E8DC /* Week8-2 */ = {
 			isa = PBXGroup;
 			children = (
-				67C1D2A4274B48280019C304 /* Service */,
+				675097D2274C9F0600929218 /* NetworkManager */,
 				6765F278274539990053E8DC /* Core */,
 				6788B5D427476B240053F819 /* Extensions */,
 				67D5E5C72747462E0063B8ED /* Cell */,
@@ -153,14 +161,6 @@
 				6788B5D527476B5D0053F819 /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		67C1D2A4274B48280019C304 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				67C1D2A5274B48AC0019C304 /* Webservice.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		67D5E5C6274741210063B8ED /* Scenes */ = {
@@ -306,7 +306,7 @@
 				67D5E5CD2747567A0063B8ED /* Photos.swift in Sources */,
 				67D5E5CB27474B5E0063B8ED /* Constants.swift in Sources */,
 				6788B5D627476B5D0053F819 /* UIImageView+Extensions.swift in Sources */,
-				67C1D2A6274B48AC0019C304 /* Webservice.swift in Sources */,
+				67C1D2A6274B48AC0019C304 /* WebService.swift in Sources */,
 				6765F265274521CB0053E8DC /* ViewController.swift in Sources */,
 				6765F261274521CB0053E8DC /* AppDelegate.swift in Sources */,
 				67D5E5C9274746600063B8ED /* CollectionViewCell.swift in Sources */,
