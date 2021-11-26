@@ -15,7 +15,6 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         configureContents()
     }
     
@@ -29,6 +28,7 @@ final class ViewController: UIViewController {
 
 //MARK: - UICollectionViewDelegate
 extension ViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
             return .init(top: 0, left: 16, bottom: 0, right: 16)
         }
@@ -45,10 +45,12 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
             let cellWidth = (collectionView.frame.width - (4 * 16)) / 3
             return .init(width: cellWidth, height: cellWidth)
         }
+    
 }
 
 //MARK: - UICollectionViewDataSource Methods
 extension ViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.photoList.getPhotosCount
     }
@@ -63,10 +65,12 @@ extension ViewController: UICollectionViewDataSource {
         cell.imageView.configureKF(url: "\(url)/\(serverId)/\(id)_\(secret)_m.jpg")
         return cell
     }
+    
 }
 
 //MARK: - UISearchBarDelegate
 extension ViewController: UISearchBarDelegate {
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text?.lowercased() else { return }
         let encodedText = text.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
@@ -76,4 +80,5 @@ extension ViewController: UISearchBarDelegate {
             self.photoCollectionView.reloadData()
         }
     }
+    
 }

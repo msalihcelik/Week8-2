@@ -7,5 +7,5 @@
 
 struct Photos: Decodable {
     let photos: PhotosInfo
-    let stat: String
+    let stat: String?
 }
