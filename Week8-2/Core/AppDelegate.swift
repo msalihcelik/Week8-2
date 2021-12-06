@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        configureKeyboard()
         return true
+    }
+    
+    func configureKeyboard() {
+        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.enableDebugging = true
+        IQKeyboardManager.shared.overrideKeyboardAppearance = true
+        IQKeyboardManager.shared.keyboardAppearance = .dark
+//        IQKeyboardManager.shared.keyboardDistanceFromTextField = 25.0
+//        IQKeyboardManager.shared.shouldShowToolbarPlaceholder = true
+//        IQKeyboardManager.shared.placeholderFont = UIFont(name: "Times New Roman", size: 15.0)
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.shouldPlayInputClicks = true
     }
 
     // MARK: UISceneSession Lifecycle
